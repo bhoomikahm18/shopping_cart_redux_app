@@ -9,12 +9,17 @@ function App() {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
 
   useEffect(() => {
-    fetch('https://redux-http-e78a2-default-rtdb.firebaseio.com/cartItem.json',{
-      method: 'PUT',
-      body: JSON.stringify(cart)
-    })
-  },[cart])
-  
+    async function sendRequest() {
+      const res = await fetch('https://redux-http-e78a2-default-rtdb.firebaseio.com/cartItem.json', {
+        method: 'PUT',
+        body: JSON.stringify(cart)
+      })
+      const data = await res.json();
+    }
+    sendRequest();
+  }, [cart])
+
+
   return (
     <div className="App">
       {!isLoggedIn && <Auth />}
