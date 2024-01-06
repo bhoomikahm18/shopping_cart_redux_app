@@ -4,9 +4,7 @@ import { uiActions } from "./ui_slice";
 export const fetchData = () => {
   return async (dispatch) => {
     const fetchHandler = async () => {
-      const res = await fetch(
-        "https://redux-http-bc782-default-rtdb.firebaseio.com/cartItems.json"
-      );
+      const res = await fetch('https://redux-http-e78a2-default-rtdb.firebaseio.com/cartItem.json');
       const data = await res.json();
       return data;
     };
